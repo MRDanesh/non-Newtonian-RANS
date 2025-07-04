@@ -42,7 +42,7 @@
       + MRF.DDt(U)
       + g
       + turbulence->divDevReff(U)
-      - fvc::div(2.0*C_tau*(muNN+nu_modified-nu) *symm(tgradU())) // (changed the sign. Validate again)
+      - fvc::div((muNN+nu_modified-nu) * dev2(2*symm(fvc::grad(U))-fvc::grad(U))) - fvm::laplacian(muNN+nu_modified-nu, U)
      ==
         fvOptions(U)
     );

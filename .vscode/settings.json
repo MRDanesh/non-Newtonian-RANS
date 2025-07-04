@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "kOmegaSSTHBBase.C": "cpp",
+        "simpleTurbulentNNFFoam.C": "cpp"
+    }
+}

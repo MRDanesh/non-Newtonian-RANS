@@ -1,11 +1,11 @@
     // Momentum predictor
 
     // non-Newtonian stress
-
+    
 	const volScalarField& omega = mesh.lookupObject<volScalarField>("omega");
 	const volScalarField& k = mesh.lookupObject<volScalarField>("k");
     const volScalarField& nu = mesh.lookupObject<volScalarField>("nu");
-
+    
     tmp<volTensorField> tgradU = fvc::grad(U);
     volScalarField extraNN = C_beta*betaStar_*omega*k;  //extra term for non-Newtonian
     volScalarField S2 = 2*magSqr(symm(tgradU()));       // Non-modified mean strain rate (squared)

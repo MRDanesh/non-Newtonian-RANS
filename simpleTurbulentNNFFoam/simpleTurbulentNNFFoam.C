@@ -48,9 +48,9 @@ int main(int argc, char *argv[])
     #include "createControl.H"
     #include "createFields.H"
     #include "initContinuityErrs.H"
-
+    
     turbulence->validate();
-
+    Info<< " Debug1 \n" << endl;
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
         }
 
         laminarTransport.correct();
+        Info<< " Debug \n" << endl;
         turbulence->correct();
 
         runTime.write();

@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "kOmegaSSTHBBase.C": "cpp",
-        "simpleTurbulentNNFFoam.C": "cpp"
+        "simpleTurbulentNNFFoam.C": "cpp",
+        "twoLiquidMixingFoam.C": "cpp",
+        "simpleTurbulentFoam.C": "cpp"
     }
 }

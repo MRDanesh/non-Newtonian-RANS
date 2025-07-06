@@ -12,6 +12,22 @@ volScalarField p
     mesh
 );
 
+// Write mesh volume size
+volScalarField cv     
+(             
+IOobject 
+       (                     
+"cv",
+runTime.timeName(),
+mesh,
+IOobject::NO_READ,                     
+IOobject::AUTO_WRITE 
+), 
+mesh,
+dimensionedScalar("zero",dimVolume,0.0) 
+); 
+cv.ref() = mesh.V();
+
 // ********** Read non-Newtonian *************//
 
 volScalarField nu_modified
@@ -29,24 +45,24 @@ volScalarField nu_modified
 );
 
 
-    IOdictionary turbulenceProperties
+IOdictionary rheoCoeffsDict
 (
     IOobject
     (
-        "turbulenceProperties",						
-        runTime.constant(),							
+        "rheologyProperties",
+        runTime.constant(),
         mesh,
         IOobject::MUST_READ_IF_MODIFIED,
         IOobject::NO_WRITE
     )
 );
 
-    dimensionedScalar K(turbulenceProperties.lookup("K"));
-    dimensionedScalar tau0(turbulenceProperties.lookup("tau0"));
-    dimensionedScalar n(turbulenceProperties.lookup("n"));
-    dimensionedScalar betaStar_(turbulenceProperties.lookup("betaStar_"));
-    dimensionedScalar C_beta(turbulenceProperties.lookup("C_beta"));
-    dimensionedScalar C_tau(turbulenceProperties.lookup("C_tau"));
+    dimensionedScalar K(rheoCoeffsDict.lookup("K"));
+    dimensionedScalar tau0(rheoCoeffsDict.lookup("tau0"));
+    dimensionedScalar n(rheoCoeffsDict.lookup("n"));
+    dimensionedScalar betaStar_(rheoCoeffsDict.lookup("betaStar_"));
+    dimensionedScalar C_beta(rheoCoeffsDict.lookup("C_beta"));
+    dimensionedScalar C_tau(rheoCoeffsDict.lookup("C_tau"));
 
 // Gravity 
 

@@ -448,11 +448,11 @@ void kOmegaSSTHBBase<TurbulenceModel, BasicTurbulenceModel>::correct()
 
 
     // ********** Read non-Newtonian *************//
-    IOdictionary turbulenceProperties
+    IOdictionary rheoCoeffsDict
     (
         IOobject
         (
-            "turbulenceProperties",
+            "rheologyProperties",
             this->mesh().time().constant(),
             this->mesh(),
             IOobject::MUST_READ_IF_MODIFIED,
@@ -460,14 +460,14 @@ void kOmegaSSTHBBase<TurbulenceModel, BasicTurbulenceModel>::correct()
         )
     );
 
-    dimensionedScalar K(turbulenceProperties.lookup("K"));
-    dimensionedScalar tau0(turbulenceProperties.lookup("tau0"));
-    dimensionedScalar n(turbulenceProperties.lookup("n"));
-    dimensionedScalar C_beta(turbulenceProperties.lookup("C_beta"));  // For Newtonian case must be zero
-    dimensionedScalar C_x(turbulenceProperties.lookup("C_x"));
-    dimensionedScalar C_zeta(turbulenceProperties.lookup("C_zeta"));
-    dimensionedScalar C_E1(turbulenceProperties.lookup("C_E1"));
-    dimensionedScalar C_E2(turbulenceProperties.lookup("C_E2"));
+    dimensionedScalar K(rheoCoeffsDict.lookup("K"));
+    dimensionedScalar tau0(rheoCoeffsDict.lookup("tau0"));
+    dimensionedScalar n(rheoCoeffsDict.lookup("n"));
+    dimensionedScalar C_beta(rheoCoeffsDict.lookup("C_beta"));  // For Newtonian case must be zero
+    dimensionedScalar C_x(rheoCoeffsDict.lookup("C_x"));
+    dimensionedScalar C_zeta(rheoCoeffsDict.lookup("C_zeta"));
+    dimensionedScalar C_E1(rheoCoeffsDict.lookup("C_E1"));
+    dimensionedScalar C_E2(rheoCoeffsDict.lookup("C_E2"));
     // **********************//
 
 

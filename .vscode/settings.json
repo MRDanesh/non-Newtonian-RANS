@@ -3,6 +3,7 @@
         "kOmegaSSTHBBase.C": "cpp",
         "simpleTurbulentNNFFoam.C": "cpp",
         "twoLiquidMixingFoam.C": "cpp",
-        "simpleTurbulentFoam.C": "cpp"
+        "simpleTurbulentFoam.C": "cpp",
+        "pimpleTurbulentFoam.C": "cpp"
     }
 }
